@@ -78,31 +78,40 @@ function Upload() {
     
         }
 
-        var no_Of_errors = document.getElementById('No_Of_Error');
-        no_Of_errors.innerHTML = no_Of_errors.innerHTML +
-        '<option value="' +excelRows.length + '" >' +excelRows.length + '</option>';
-       
+        var opt = document.createElement('option');
+        opt.value = 0;
+        opt.text = excelRows.length;
+        No_Of_Error.options.add(opt);
         
 }    
 
 function populate(){
 
-    var p = document.getElementById('market').selectedIndex;
-    const index = document.getElementsByTagName("option")[p].value;
-    var data = excelRows;
-    document.getElementById('error').value = index;
-    var no_Of_errors = document.getElementById('No_Of_Error');
-    for (var i = 0; i < excelRows.length; i++) {
-        no_Of_errors.innerHTML = no_Of_errors.innerHTML +
-                '<option value="' + i+ '">' + excelRows[i].Count + '</option>';
-    }
-    
-    document.getElementById('No_Of_Error').value = index;
-    
+    var market = document.getElementById('market').selectedIndex;
+    const index = document.getElementsByTagName("option")[market].value;
 
 }
 
 function errorDetails() {
     console.log("hover");
+    let error = document.getElementById('error').selectedIndex;
+    const error_index = document.getElementsByTagName("option")[error].value;
+    const data = excelRows;
+    const count = excelRows[error_index].Count;
+    changeCount(No_Of_Error,count,error_index);
+    console.log(error_index)
+    console.log(count);
 }
 
+function changeCount(No_Of_Error,text, value) {
+    
+var sel = document.getElementById('No_Of_Error');
+
+	sel.remove(1);
+    
+
+    var opt = document.createElement('option');
+    opt.value = value;
+    opt.text = text;
+    No_Of_Error.options.add(opt);
+}
