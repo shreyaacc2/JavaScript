@@ -155,16 +155,23 @@ function populateErrorMessage(excelRows){
 var SelectedMarket;
 function SetMarketValue(Market)
 {    SelectedMarket = Market;
+    MarketRowsreturn(SelectedMarket);
     const MarketRows =  excelRows.filter(item => item.Market === Market)
     rePopulateDropdowns(MarketRows);
     return MarketRows;
 
 }
 
+function MarketRowsreturn(SelectedMarket){
+    console.log(SelectedMarket);
+    const MarketRows =  excelRows.filter(item => item.Market === SelectedMarket);
+    console.log(MarketRows);
+    return MarketRows;
+}
+
 function rePopulateDropdowns(MarketValue){
     //reset all drop downs to zero
-    document.getElementById('error').options.length = 0;
-    document.getElementById('No_Of_Error').options.length = 0;
+  //  document.getElementById('No_Of_Error').options.length = 0;
     document.getElementById('SessionId').options.length = 0
     document.getElementById('errorMessage').options.length = 0;
 
@@ -173,8 +180,9 @@ function rePopulateDropdowns(MarketValue){
     const data = MarketValue;
     // repopulate error and number of error
     const Error = _.countBy(data, function(data) { return data.Error; });
-    let ErrorValue = Object.keys(Error);
     
+    let ErrorValue = Object.keys(Error);
+    document.getElementById('error').options.length = 0;
     var errors = document.getElementById('error');
         for (var i = 0; i < ErrorValue.length; i++) {
             // POPULATE SELECT ELEMENT WITH JSON.
@@ -182,13 +190,14 @@ function rePopulateDropdowns(MarketValue){
                 '<option value="' + ErrorValue[i]+ '">' + ErrorValue[i] + '</option>';
         }
            
-    // populate number of error dropdown            
+    // populate number of error dropdown    
+    document.getElementById('No_Of_Error').options.length = 0;        
     var noOferrors = document.getElementById('No_Of_Error');
         noOferrors.innerHTML = noOferrors.innerHTML +
                     '<option value="' + 0 + '">' + ErrorValue.length + '</option>';  
 
     // populate session ID dropdown
-   
+    document.getElementById('SessionId').options.length = 0
     var sessionIdelement = document.getElementById('SessionId');
         for (var i = 0; i < data.length; i++) {
             // POPULATE SELECT ELEMENT WITH JSON.
@@ -221,7 +230,7 @@ function SetErrorValue(error)
 }
 
 function populateCountMappedWithError(ErrorValue){  
-  const MarketRows = SetMarketValue(SelectedMarket);
+  const MarketRows = MarketRowsreturn(SelectedMarket);
  
   const getMarketErrors = MarketRows.filter(item => item.Error == ErrorValue);
   console.log(getMarketErrors);
@@ -243,7 +252,7 @@ function setSessionId(sessionId)
 
 function populateErrorMessageMappedWithSession(SessionId) 
 {
-  const MarketRows = SetMarketValue(SelectedMarket);
+  const MarketRows = MarketRowsreturn(SelectedMarket);
  
   const getSessionIdRow = MarketRows.filter(item => item.Session_ID == SessionId);
   console.log(getSessionIdRow);
