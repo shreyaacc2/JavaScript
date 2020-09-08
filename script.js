@@ -216,10 +216,7 @@ function rePopulateDropdowns(MarketValue){
             errors.innerHTML = errors.innerHTML +
                 '<option value="' + ErrorMessageValue[i]+ '">' + ErrorMessageValue[i] + '</option>';
     
-        }   
-
-    
-                    
+        }                     
 }
 
 
@@ -247,7 +244,6 @@ function setSessionId(sessionId)
 {
     SessionId = sessionId;
     populateErrorMessageMappedWithSession(SessionId);
-
 }
 
 function populateErrorMessageMappedWithSession(SessionId) 
@@ -264,8 +260,6 @@ function populateErrorMessageMappedWithSession(SessionId)
             errorsMessage.innerHTML = errorsMessage.innerHTML +
                 '<option value="' + getSessionIdRow[i].Error_Message+ '">' + getSessionIdRow[i].Error_Message + '</option>';
     
-        } 
-
-
+        }
   
 }

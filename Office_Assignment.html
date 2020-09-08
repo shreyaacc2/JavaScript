@@ -3,6 +3,9 @@
 <head>
 	<title>Error Details Website</title>
 <link rel="StyleSheet" href="./StyleSheet.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <meta charset="UTF-8">
 
@@ -27,26 +30,24 @@
     </div>
   </div>
 
-
   <div class="dropdown">
-    
-    <select id="market" onchange ="SetMarketValue(this.options[this.selectedIndex].value)" >
-      <option value="-1">--Markets--</option>
+    <select id="market" onchange ="SetMarketValue(this.options[this.selectedIndex].value)" > 
+      <<option value="0" selected hidden>--Markets--</option>
+
   </select>
      
   </div>
 
   <div class="dropdown">
-    
-    <select id="error" onchange="SetErrorValue(this.options[this.selectedIndex].value)">
-      <option value="-1">--Errors--</option>
+    <select id="error" onchange ="SetErrorValue(this.options[this.selectedIndex].value)">
+      <option value="0">--Errors--</option>
   </select>
      
   </div>
   <div class="dropdown">
     
     <select id="No_Of_Error">
-      <option value ="-1" >--No of Errors--</option>
+      <option value ="0" >--No of Errors--</option>
   </select>
      
   </div>
@@ -54,7 +55,7 @@
   <div class="dropdown">
     
     <select id="SessionId" onchange="setSessionId(this.options[this.selectedIndex].value)">
-      <option value ="-1" >--Session ID--</option>
+      <option value ="0" >--Session ID--</option>
   </select>
      
   </div>
@@ -62,7 +63,7 @@
   <div class="dropdown">
     
     <select id="errorMessage">
-      <option value ="-1" >--Error Message--</option>
+      <option value ="0" >--Error Message--</option>
   </select>
      
   </div>
